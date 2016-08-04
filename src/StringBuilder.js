@@ -10,11 +10,11 @@ function StringBuilder() {
     this.AppendLine = function(s, o){
 
         if(typeof o == "undefined"){
-    		this.Append( s ); 
+    		this.Append( (s || "") +  "\r\n"); 
     	}else{
-    		this.AppendFormat( s, o );
+    		this.AppendFormat( s, o ) + "\r\n";
     	}
-    	this.Append( "\r\n" ); 
+
     };
 
     this.AppendFormat = function(s, o){ 
@@ -22,6 +22,15 @@ function StringBuilder() {
     	for(var i = 0; i < o.length; i++)
     		t = t.split("{" + i + "}").join(o[i]);
     	this.Append(t);
+    };
+    
+    this.Remove(ln){
+        var n = []
+        for(var i = 0; i < this["_ReturnValue"].length; i++){
+            if(ln != i){
+                n.push(this["_ReturnValue"][i]);
+            }
+        }
     };
 
     this.ToString = function(){ return this["_ReturnValue"].join(""); };
@@ -32,6 +41,18 @@ function StringBuilder() {
     	var t = this.ToString().join().split(s).join(b);
     	this.Clear();
     	this.Append(t);	
+    };
+    
+    this.Count(){
+        return this["_ReturnValue"].length;
+    };
+    
+    this.Length(){
+        return this.Count();
+    };
+    
+    this.ReplaceLine = function(ln,s){ 
+    	this["_ReturnValue"][ln] = s;	
     };
 
 }
