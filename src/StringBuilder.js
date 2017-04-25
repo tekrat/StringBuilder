@@ -24,7 +24,7 @@ function StringBuilder() {
     	this.Append(t);
     };
     
-    this.Remove(ln){
+    this.Remove = function(ln){
         var n = []
         for(var i = 0; i < this["_ReturnValue"].length; i++){
             if(ln != i){
@@ -43,11 +43,11 @@ function StringBuilder() {
     	this.Append(t);	
     };
     
-    this.Count(){
+    this.Count = function(){
         return this["_ReturnValue"].length;
     };
     
-    this.Length(){
+    this.Length = function(){
         return this.Count();
     };
     
