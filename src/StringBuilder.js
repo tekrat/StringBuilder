@@ -1,9 +1,9 @@
 function StringBuilder() {
 
-    this._ReturnValue = [];
+    this.r = [];
 
     this.Append = function(s){ 
-        this["_ReturnValue"].push( (typeof s == "undefined" ? "" : s) ); 
+        this.r.push( (typeof s == "undefined" ? "" : s) ); 
     };
 
 
@@ -26,16 +26,16 @@ function StringBuilder() {
     
     this.Remove = function(ln){
         var n = []
-        for(var i = 0; i < this["_ReturnValue"].length; i++){
+        for(var i = 0; i < this.r.length; i++){
             if(ln != i){
-                n.push(this["_ReturnValue"][i]);
+                n.push(this.r[i]);
             }
         }
     };
 
-    this.ToString = function(){ return this["_ReturnValue"].join(""); };
+    this.ToString = function(){ return this.r.join(""); };
 
-    this.Clear = function(){ this["_ReturnValue"] = []; } ;
+    this.Clear = function(){ this.r = []; } ;
 
     this.Replace = function(s,b){ 
     	var t = this.ToString().join().split(s).join(b);
@@ -44,7 +44,7 @@ function StringBuilder() {
     };
     
     this.Count = function(){
-        return this["_ReturnValue"].length;
+        return this.r.length;
     };
     
     this.Length = function(){
@@ -52,7 +52,7 @@ function StringBuilder() {
     };
     
     this.ReplaceLine = function(ln,s){ 
-    	this["_ReturnValue"][ln] = s;	
+    	this.r[ln] = s;	
     };
 
 }
